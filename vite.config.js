@@ -4,7 +4,7 @@ import {
 export default defineConfig({
     assetsInclude: ['**/*.svg'],
     // Base public path
-    base: '/',
+    base: '/Toaster/',
 
     // Server options
     //server: {
