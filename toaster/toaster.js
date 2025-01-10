@@ -82,7 +82,8 @@ function setPosition(position) {
         toastTransformWrap.style.transform = `translateY(calc(100vh / ${position}))`;
     } else if (typeof position === 'object' && position.x !== undefined && position.y !== undefined) {
         const { x, y } = position;
-        toastTransformWrap.style.transform = `translate(calc(${x}), calc(${y}))`;
+        console.log(position)
+        toastTransformWrap.style.transform = `translate(${x}px, ${y}px)`;
     } else {
         const POSITION_PRESETS = {
             center: 'translate(0)',
@@ -144,7 +145,7 @@ function toastDismiss() {
     resetTimers();
     toastAligner.classList.add('toasted');
     resetTimer = setTimeout(() => {
-        toastWrapper.classList.remove('toastPushed', 'toastBoing');
+        toastWrapper.classList.remove('toastPushed', 'toastBoing', 'toastShake', 'toastErr');
         applyStyles(toastAligner, { display: 'none', pointerEvents: 'none' });
         nextQueue();
     }, 500);
@@ -156,6 +157,7 @@ function toastClear() {
 }
 
 function nextQueue() {
+    console.log(toastQueue.length)
     if (toastQueue.length === 0) {
         toasting = false;
         return;
@@ -200,6 +202,8 @@ function nextQueue() {
         const resolvedIconUrl = iconUrl || (icon && resolveIconUrl(`${icon}`)) || '';
         toastIcon.style.setProperty('--toastIconUrl', `url(${resolvedIconUrl})`);
 
+        //reset icon
+        toastIcon.classList.remove('tiWarn', 'tiStop', 'tiInfo');
         switch (icon) {
             case 'warn':
                 toastIcon.classList.add('tiWarn');
@@ -211,13 +215,14 @@ function nextQueue() {
                 toastIcon.classList.add('tiInfo');
                 break;
             default:
+                toastIcon.classList.remove('tiWarn', 'tiStop', 'tiInfo');
                 break;
         }
 
-        applyStyles(toastAligner, {
-            display: 'grid',
-            pointerEvents: interactive || skippable || button.length > 0 ? 'auto' : 'none',
-        });
+        //reset pos
+        toastTransformWrap.style.transform = ''
+
+
 
         toastAligner.classList.remove('toasted');
 
@@ -245,6 +250,10 @@ function nextQueue() {
         setPosition(position);
         configureButtons(button, forceVerticalButtons);
 
+        applyStyles(toastAligner, {
+            display: 'grid',
+            pointerEvents: interactive || skippable || button.length > 0 ? 'auto' : 'none',
+        });
         applyStyles(toastTitle, { display: title ? 'block' : 'none' });
         applyStyles(toastIcon, { display: resolvedIconUrl || icon ? 'block' : 'none' });
         applyStyles(toastContent, {maxWidth: noWidthLimit ? 'none' : '300px'});

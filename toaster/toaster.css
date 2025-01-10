@@ -158,6 +158,7 @@
   display: grid;
   place-items: center;
   transition: 0.2s filter var(--sleek);
+  margin: 0 0.2rem;
   cursor: pointer;
 }
 .toastAlign .toastDashes .tbButton:hover {
@@ -168,7 +169,7 @@
 }
 .toastAlign .toastDashes .tbButton.vertical {
   min-width: 100% !important;
-  margin-top: 1em;
+  margin: 1em 0 0;
 }
 
 @keyframes fade {

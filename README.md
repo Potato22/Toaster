@@ -141,19 +141,23 @@ Optionally if you would like to be precise, you could use the `{x, y}` object:
 ---
 - `interactive: 🟦bool`
 > ⚠️ This will nullify `duration`.  
-> Toast will stay on screen until user clicked anywhere on the screen.
->
-> 🟢 Should only be paired with `onInteract()`
+> 🟢 Should only be paired with `onInteract()`  
+
+Toast will stay on screen until user clicked anywhere on the screen.
+
 ---
 - `skippable: 🟦bool`
 > ⚠️ This will nullify `interactive`.  
-> Toast will still disappear after the designated duration, but the user can immediately close by clicking anywhere on the screen.
+
+Toast will still disappear after the designated duration, but the user can immediately close by clicking anywhere on the screen.
+
 ---
 - `hold: 🟦bool`
 > ⚠️ This will nullify ALL `duration`, `interactive`, `skippable`.  
-> A method to programmatically dismiss or clear the toast queue.
 
+A method to programmatically dismiss or clear the toast queue.
 > ❗🟢 using either `toastDismiss()` or `toastClear()` tied in a function somewhere **is required**, otherwise the toast will **Never** disappear.
+
 > ```js
 > $someGodKnowsWhatElement.addEventListener('click', () => toastDismiss())
 ---
