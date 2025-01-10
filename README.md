@@ -14,7 +14,7 @@ Toast notification utility by Potto.
 
 ## Usage & Configs
 ### No need NPM
-Simply put the package into the root path (or anywhere) and reference it appropriately with `import` in any other one of your scripts:
+Simply put the package `/toaster/` into the root path (or anywhere) and reference it appropriately with `import` in any other one of your scripts:
   
 ```js
 //imGonnaMakeAnAnnouncement.js
@@ -65,20 +65,16 @@ Good to go.
 ---
 - `icon: 🟨'string'` Icons  
 
-> The package includes `warn` and `stop` icons by default. For custom icons, place your image files in the `./toaster/icons` folder.  
+> The package includes `warn`, `stop`, and `info` icons by default. For custom icons, place your image files in the `/toaster/icons` folder.  
 
-> ℹ️ param `icon` will use the **filename as the lookup**, this is to prevent link breakage by using bundlers.  
->
-> ex: the icon name is `something.png`  
-> fill the `icon` parameter as `something`
+usage:  
 
 ```js
 pushToast({
     title: 'A title about something',
     text: 'Something about something',
 
-    //something.png -> something
-    icon: 'something'
+    icon: 'something.png'
 })
 ```
 🚫 Should not co-exist with `iconURL`, it will override each other. (most bottom overwrites)

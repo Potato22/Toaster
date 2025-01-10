@@ -239,6 +239,13 @@ function demo() {
         icon: 'kiwiblowup.jpg',
         button: [
             {
+                label: 'Check repository/documentation',
+                highlight: true,
+                onClick: () => {
+                    location.assign("https://github.com/Potato22/Toaster")
+                }
+            },
+            {
                 label: 'Toast layout',
                 onClick: () => {
                     testToastLayout()
@@ -270,7 +277,6 @@ function demo() {
             },
             {
                 label: 'get me out of here',
-                highlight: true,
                 onClick: () => {
                     //toastDismiss()
                     toastPush({
