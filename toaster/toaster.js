@@ -50,7 +50,6 @@ function initializeToaster() {
     };
 }
 
-// Rest of your existing code...
 const {
     toastAligner,
     toastWrapper,

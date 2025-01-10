@@ -1,5 +1,19 @@
 import { toastPush, toastDismiss, toastClear } from '../toaster/toaster'
 
+function testToastTypes() {
+    toastPush({
+        text: 'Text content only -toast'
+    }, {
+        interactive: true,
+    })
+    toastPush({
+        title: 'Title and',
+        text: 'Text -toast'
+    }, {
+        interactive: true,
+    })
+}
+
 toastPush({
     title: 'Hi hello',
     text: "Toaster is a toast notification utility designed to be as simple as possible - can be used in both bundler environments and manual."
@@ -13,6 +27,9 @@ toastPush({
     button: [
         {
             label: 'various toast types',
+            onClick: () => {
+                testToastTypes()
+            }
         },
         {
             label: 'buttons',
@@ -27,7 +44,7 @@ toastPush({
             label: 'get me out of here',
             highlight: true,
             onClick: () => {
-                toastDismiss()
+                //toastDismiss()
                 toastPush({
                     text: "App content failed to load: aborted (003)"
                 }, {
